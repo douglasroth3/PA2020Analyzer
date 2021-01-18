@@ -25,6 +25,12 @@ Mail-in ballots for Democrat applicants returned before the date they were sent 
 Mail-in ballots for Republican applicants returned on or before the date they were sent by the state: 35.
 Mail-in ballots for Independant/Other applicants returned on or before the date they were sent by the state: 27.
 
+Mail-in ballots get sent to applicants, then the applicant returns them.  One would expect mail-in ballots not to be returned by applicants on the same day they were sent by the state.
+Mail-in ballots for all applicants returned on the same the date they were sent by the state: 38,592.
+Mail-in ballots for Democrat applicants returned on the same the date they were sent by the state: 21,598.
+Mail-in ballots for Republican applicants returned on or on the same the date they were sent by the state: 11,948.
+Mail-in ballots for Independant/Other applicants returned on or on the same the date they were sent by the state: 5,046.
+
 Mail-in ballots get mailed to applicants, then the applicant returns them.  One would expect there to be a record of when all mail-in ballots were sent to applicants.
 Mail-in ballots for all applicants returned without any ballot mailed date: 10,415.
 Mail-in ballots for Democrat applicants returned without any ballot mailed date: 5,903.
@@ -32,7 +38,8 @@ Mail-in ballots for Republican applicants returned without any ballot mailed dat
 Mail-in ballots for Independant/Other applicants returned without any ballot mailed date: 1,334.
 
 Applicants get a application, then return it, then the state sends them a ballot.  One would expect the state not to send a ballot before they get the application.
-Cases where applicant's ballot was sent to them before their application was returned: 4,218.
+Cases where anyapplicant's ballot was sent to them before their application was returned: 4,218.
+Cases where Democrat applicant's ballot was sent to them before their application was returned: 2,788.
 Cases where Republican applicant's ballot was sent to them before their application was returned: 755.
 Cases where Independant/Other applicant's ballot was sent to them  before their application was returned: 675.
 
@@ -45,8 +52,11 @@ Cases where Independant/Other applicant's application was approved before their 
 Applicants include their birthday to match to voter roles. As the oldest person in the US was 119, one would not expect there to be any ballots returned by people 120 or older.
 Dates of 1/1/1800 designate voters whose date of birth is intentionally hidden due to confidentiality concerns (typically domestic violence) and are excluded here.
 Mail-in ballots with an associated birthdate 120 years old or older on Nov 3rd: 18.
+Mail-in ballots missing birthdate: 169.
 Mail-in ballots with an associated birthdate younger than 18 years old on Nov 3rd: 1.
 
+The date by which mail-in ballots must be received has been the subject of legal arguments and a case is active with SCOTUS in Pennsylvania Democratic Party v Boockvar.
+Current ruling by lower courts is that late-arriving ballots must be counted unless there is reason to believe they were not postmarked by Nov. 3rd.
 Latest date Ballot received: 12/16/2020
 Mail-in ballots for all applicants returned after 11/3/2020: 69,004.
 Mail-in ballots for Democrat applicants returned after 11/3/2020: 37,351.
@@ -57,8 +67,12 @@ Mail-in ballots for all applicants returned after 11/6/2020: 19,660.
 Mail-in ballots for Democrat applicants returned after 11/6/2020: 12,659.
 Mail-in ballots for Republican applicants returned after 11/6/2020: 3,869.
 Mail-in ballots for Independant/Other applicants returned after 11/6/2020: 3,132.
-Total ballots with potential issues besides post-Nov 3rd return date 15,887 (%0.60)
-Total ballots with post-Nov 3rd return date but no other potential issues 68,024 (%2.59)
+
+Total ballots with potential issues besides post-Nov 3rd return date 70,347 (%2.67)
+Democrat applicant ballots with potential issues besides post-Nov 3rd return date 31,150 (%1.83)
+Republican applicant ballots with potential issues besides post-Nov 3rd return date 15,974 (%2.56)
+Independant/Other applicant ballots with potential issues besides post-Nov 3rd return date 7,336 (%2.41)
+Total ballots with post-Nov 3rd return date but no other potential issues 67,564 (%2.57)
 ```
 
 ## To Run the Analysis

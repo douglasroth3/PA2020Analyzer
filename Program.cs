@@ -59,11 +59,20 @@ namespace _2020Election
             var totalBallotReturnedOther = 0;
 
             var problemBallots = 0;
+            var problemBallotsDem = 0;
+            var problemBallotsRep = 0;
+            var problemBallotsOther = 0;
 
             var returnedBeforeMailedTotal = 0;
             var returnedBeforeMailedDem = 0;
             var returnedBeforeMailedRep = 0;
             var returnedBeforeMailedOther = 0;
+
+            var returnedSameDayMailedTotal = 0;
+            var returnedSameDayMailedDem = 0;
+            var returnedSameDayMailedRep = 0;
+            var returnedSameDayMailedOther = 0;
+
 
             var ballotReturnedWithNoMailedDateTotal = 0;
             var ballotReturnedWithNoMailedDateDem = 0;
@@ -171,6 +180,18 @@ namespace _2020Election
                     if (row.BallotReturnedDate < row.BallotMailedDate && row.ApplicantPartyDesignation != "R" && row.ApplicantPartyDesignation != "D") returnedBeforeMailedOther++;
                     if (hasPossibleIssue) problemBallots++;
 
+                    //Ballots Returned same day they were mailed
+                    if (row.BallotReturnedDate == row.BallotMailedDate) { returnedSameDayMailedTotal++; hasPossibleIssue = true; }
+                    if (row.BallotReturnedDate == row.BallotMailedDate && row.ApplicantPartyDesignation == "D") returnedSameDayMailedDem++;
+                    if (row.BallotReturnedDate == row.BallotMailedDate && row.ApplicantPartyDesignation == "R") returnedSameDayMailedRep++;
+                    if (row.BallotReturnedDate == row.BallotMailedDate && row.ApplicantPartyDesignation != "R" && row.ApplicantPartyDesignation != "D") returnedSameDayMailedOther++;
+
+                    //Calculate ballots with problem above.  Do not include potential date issues below.
+                    if (hasPossibleIssue) problemBallots++;
+                    if (hasPossibleIssue && row.ApplicantPartyDesignation == "D") problemBallotsDem++;
+                    if (hasPossibleIssue && row.ApplicantPartyDesignation == "R") problemBallotsRep++;
+                    if (hasPossibleIssue && row.ApplicantPartyDesignation != "D" && row.ApplicantPartyDesignation != "R") problemBallotsOther++;
+
                     //Returned after Nov 3rd
                     if (row.BallotReturnedDate > nov3rd) { returnedAfter3rdTotal++; }
                     if(!hasPossibleIssue && row.BallotReturnedDate > nov3rd) returnedAfter3rdButNoOtherIssues++;
@@ -205,6 +226,12 @@ namespace _2020Election
             Console.WriteLine($"Mail-in ballots for Republican applicants returned on or before the date they were sent by the state: {returnedBeforeMailedRep:N0}.");
             Console.WriteLine($"Mail-in ballots for Independant/Other applicants returned on or before the date they were sent by the state: {returnedBeforeMailedOther:N0}.");
             Console.WriteLine();
+            Console.WriteLine("Mail-in ballots get sent to applicants, then the applicant returns them.  One would expect mail-in ballots not to be returned by applicants on the same day they were sent by the state.");
+            Console.WriteLine($"Mail-in ballots for all applicants returned on the same the date they were sent by the state: {returnedSameDayMailedTotal:N0}.");
+            Console.WriteLine($"Mail-in ballots for Democrat applicants returned on the same the date they were sent by the state: {returnedSameDayMailedDem:N0}.");
+            Console.WriteLine($"Mail-in ballots for Republican applicants returned on or on the same the date they were sent by the state: {returnedSameDayMailedRep:N0}.");
+            Console.WriteLine($"Mail-in ballots for Independant/Other applicants returned on or on the same the date they were sent by the state: {returnedSameDayMailedOther:N0}.");
+            Console.WriteLine();
             Console.WriteLine("Mail-in ballots get mailed to applicants, then the applicant returns them.  One would expect there to be a record of when all mail-in ballots were sent to applicants.");
             Console.WriteLine($"Mail-in ballots for all applicants returned without any ballot mailed date: {ballotReturnedWithNoMailedDateTotal:N0}.");
             Console.WriteLine($"Mail-in ballots for Democrat applicants returned without any ballot mailed date: {ballotReturnedWithNoMailedDateDem:N0}.");
@@ -212,7 +239,7 @@ namespace _2020Election
             Console.WriteLine($"Mail-in ballots for Independant/Other applicants returned without any ballot mailed date: {ballotReturnedWithNoMailedDateOther:N0}.");
             Console.WriteLine();
             Console.WriteLine("Applicants get a application, then return it, then the state sends them a ballot.  One would expect the state not to send a ballot before they get the application. ");
-            Console.WriteLine($"Cases where applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedTotal:N0}.");
+            Console.WriteLine($"Cases where anyapplicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedTotal:N0}.");
             Console.WriteLine($"Cases where Democrat applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedDem:N0}.");
             Console.WriteLine($"Cases where Republican applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedRep:N0}.");
             Console.WriteLine($"Cases where Independant/Other applicant's ballot was sent to them  before their application was returned: {applicationReturnedAfterBallotMailedOther:N0}.");
@@ -229,6 +256,8 @@ namespace _2020Election
             Console.WriteLine($"Mail-in ballots missing birthdate: {ballotsMissingBirthDate:N0}.");
             Console.WriteLine($"Mail-in ballots with an associated birthdate younger than 18 years old on Nov 3rd: {ballotsReturnedByYoungerThan18:N0}.");
             Console.WriteLine();
+            Console.WriteLine("The date by which mail-in ballots must be received has been the subject of legal arguments and a case is active with SCOTUS in Pennsylvania Democratic Party v Boockvar.");         
+            Console.WriteLine("Current ruling by lower courts is that late-arriving ballots must be counted unless there is reason to believe they were not postmarked by Nov. 3rd.");   
             Console.WriteLine($"Latest date Ballot received: {maxBallotReturnDate:d}");
             Console.WriteLine($"Mail-in ballots for all applicants returned after 11/3/2020: {returnedAfter3rdTotal:N0}.");
             Console.WriteLine($"Mail-in ballots for Democrat applicants returned after 11/3/2020: {returnedAfter3rdDem:N0}.");
@@ -241,6 +270,10 @@ namespace _2020Election
             Console.WriteLine($"Mail-in ballots for Independant/Other applicants returned after 11/6/2020: {returnedAfter6thOther:N0}.");                       
             Console.WriteLine();
             Console.WriteLine($"Total ballots with potential issues besides post-Nov 3rd return date {problemBallots:N0} (%{((double)problemBallots / (double)totalBallotReturned) * 100D:N2})");
+            Console.WriteLine($"Democrat applicant ballots with potential issues besides post-Nov 3rd return date {problemBallotsDem:N0} (%{((double)problemBallotsDem / (double)totalBallotReturnedDem) * 100D:N2})");
+            Console.WriteLine($"Republican applicant ballots with potential issues besides post-Nov 3rd return date {problemBallotsRep:N0} (%{((double)problemBallotsRep / (double)totalBallotReturnedRep) * 100D:N2})");
+            Console.WriteLine($"Independant/Other applicant ballots with potential issues besides post-Nov 3rd return date {problemBallotsOther:N0} (%{((double)problemBallotsOther / (double)totalBallotReturnedOther) * 100D:N2})");
+
             Console.WriteLine($"Total ballots with post-Nov 3rd return date but no other potential issues {returnedAfter3rdButNoOtherIssues:N0} (%{((double)returnedAfter3rdButNoOtherIssues / (double)totalBallotReturned) * 100D:N2})");
         }
     }
