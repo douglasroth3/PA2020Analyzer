@@ -239,7 +239,7 @@ namespace _2020Election
             Console.WriteLine($"Mail-in ballots for Independant/Other applicants returned without any ballot mailed date: {ballotReturnedWithNoMailedDateOther:N0}.");
             Console.WriteLine();
             Console.WriteLine("Applicants get a application, then return it, then the state sends them a ballot.  One would expect the state not to send a ballot before they get the application. ");
-            Console.WriteLine($"Cases where anyapplicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedTotal:N0}.");
+            Console.WriteLine($"Cases where any applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedTotal:N0}.");
             Console.WriteLine($"Cases where Democrat applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedDem:N0}.");
             Console.WriteLine($"Cases where Republican applicant's ballot was sent to them before their application was returned: {applicationReturnedAfterBallotMailedRep:N0}.");
             Console.WriteLine($"Cases where Independant/Other applicant's ballot was sent to them  before their application was returned: {applicationReturnedAfterBallotMailedOther:N0}.");

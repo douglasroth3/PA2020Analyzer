@@ -38,7 +38,7 @@ Mail-in ballots for Republican applicants returned without any ballot mailed dat
 Mail-in ballots for Independant/Other applicants returned without any ballot mailed date: 1,334.
 
 Applicants get a application, then return it, then the state sends them a ballot.  One would expect the state not to send a ballot before they get the application.
-Cases where anyapplicant's ballot was sent to them before their application was returned: 4,218.
+Cases where any applicant's ballot was sent to them before their application was returned: 4,218.
 Cases where Democrat applicant's ballot was sent to them before their application was returned: 2,788.
 Cases where Republican applicant's ballot was sent to them before their application was returned: 755.
 Cases where Independant/Other applicant's ballot was sent to them  before their application was returned: 675.
