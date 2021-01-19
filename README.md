@@ -78,12 +78,15 @@ Total ballots with post-Nov 3rd return date but no other potential issues 67,564
 ## To Run the Analysis
 
 Install .NET 5 SDK (Not just runtime) https://dotnet.microsoft.com/download/dotnet/5.0
+
 Install git https://git-scm.com/downloads 
 
 From a Linux, Mac, or Windows terminal, be sure you are in a project folder and then run:
 
+```
 git clone https://github.com/douglasroth3/PA2020Analyzer.git
 dotnet run
+```
 
 The first time the application is run, it will offer to download data from https://data.pa.gov/api/views/mcba-yywm/rows.csv?accessType=DOWNLOAD .  If you would rather, you may manually download the data and place it in the same folder.  Be sure to name it 2020_General_Election_Mail_Ballot_Requests_Department_of_State.csv
 
